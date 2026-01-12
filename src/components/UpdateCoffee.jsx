@@ -1,5 +1,11 @@
+import Navbar from "./Navbar";
+
 const UpdateCoffee = () => {
-  return <div>UpdateCoffee</div>;
+  return (
+    <div>
+      <Navbar></Navbar>
+    </div>
+  );
 };
 
 export default UpdateCoffee;
