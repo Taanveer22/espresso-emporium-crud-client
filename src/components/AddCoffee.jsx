@@ -23,6 +23,8 @@ const AddCoffee = () => {
       photo,
     };
     // console.log(newCoffee);
+
+    // send data to server
     fetch("http://localhost:5000/coffees", {
       method: "POST",
       headers: {
@@ -124,7 +126,7 @@ const AddCoffee = () => {
             </fieldset>
           </div>
           {/* btn */}
-          <div className="">
+          <div>
             <button className="btn btn-success w-full">Add Coffee</button>
           </div>
         </form>

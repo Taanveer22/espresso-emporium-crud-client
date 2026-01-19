@@ -4,7 +4,7 @@ import Card from "../components/Card";
 
 const Root = () => {
   const coffeesData = useLoaderData();
-  console.log(coffeesData);
+  // console.log(coffeesData);
   return (
     <div>
       <Navbar></Navbar>

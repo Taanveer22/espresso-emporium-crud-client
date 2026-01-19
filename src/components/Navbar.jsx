@@ -9,9 +9,6 @@ const Navbar = () => {
       <Link to="/addCoffee" className="btn btn-ghost text-xl">
         Add Coffee
       </Link>
-      <Link to="/updateCoffee" className="btn btn-ghost text-xl">
-        Update Coffee
-      </Link>
     </div>
   );
 };
