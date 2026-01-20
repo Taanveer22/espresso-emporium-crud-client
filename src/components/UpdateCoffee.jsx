@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router-dom";
-import Navbar from "./Navbar";
 import Swal from "sweetalert2";
 
 const UpdateCoffee = () => {
@@ -53,7 +52,6 @@ const UpdateCoffee = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
       <section className="w-11/12 mx-auto">
         <form onSubmit={handleUpdateCoffee}>
           {/* 1st */}

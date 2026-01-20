@@ -15,6 +15,9 @@ const Navbar = () => {
       <NavLink to="/register" className="btn btn-ghost text-md">
         Register
       </NavLink>
+      <NavLink to="/users" className="btn btn-ghost text-md">
+        Users
+      </NavLink>
     </div>
   );
 };

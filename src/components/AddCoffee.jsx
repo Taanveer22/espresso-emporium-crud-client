@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import Swal from "sweetalert2";
 const AddCoffee = () => {
   const handleAddCoffee = (e) => {
@@ -47,7 +46,6 @@ const AddCoffee = () => {
   };
   return (
     <div>
-      <Navbar></Navbar>
       <section className="w-11/12 mx-auto">
         <form onSubmit={handleAddCoffee}>
           {/* 1st */}
