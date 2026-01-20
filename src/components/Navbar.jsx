@@ -1,14 +1,20 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="navbar justify-center bg-base-300 shadow-sm">
-      <Link to="/" className="btn btn-ghost text-xl">
+      <NavLink to="/" className="btn btn-ghost text-md">
         Home
-      </Link>
-      <Link to="/addCoffee" className="btn btn-ghost text-xl">
+      </NavLink>
+      <NavLink to="/addCoffee" className="btn btn-ghost text-md">
         Add Coffee
-      </Link>
+      </NavLink>
+      <NavLink to="/signin" className="btn btn-ghost text-md">
+        Sign In
+      </NavLink>
+      <NavLink to="/register" className="btn btn-ghost text-md">
+        Register
+      </NavLink>
     </div>
   );
 };
