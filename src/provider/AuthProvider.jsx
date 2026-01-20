@@ -1,5 +1,8 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { createContext, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
 
 // STEP 1: Create a context to share authentication data/functions
@@ -18,18 +21,30 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // STEP 6: Prepare the values to be shared via context
+  // STEP 6 : must listen to firebase auth state
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    return () => {
+      unSubscribe();
+    };
+  }, []);
+
+  // STEP 7: Prepare the values to be shared via context
   const userInfo = {
     user,
     loading,
     registerUser,
   };
-  // STEP 7: Provide auth data/functions to all child components
+  // STEP 8: Provide auth data/functions to all child components
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );
 };
 
-// STEP 8: Export provider and context for use in other components
+// STEP 9: Export provider and context for use in other components
 export default AuthProvider;
 export { AuthContext };

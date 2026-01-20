@@ -8,16 +8,38 @@ const Register = () => {
   const handleRegisterForm = (e) => {
     e.preventDefault();
 
+    const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+
+    // console.log(newUser);
 
     registerUser(email, password)
       .then((result) => {
-        toast.success(result.user);
+        toast.success("registered user successfully");
+        console.log(result.user);
+        const creationTime = result?.user?.metadata?.creationTime;
+
+        // send data to server and database
+        const newUser = { name, email, creationTime };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              toast.success("user created in database");
+            }
+          });
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error("failed to register");
+        console.log(error.message);
       });
   };
 
@@ -29,6 +51,14 @@ const Register = () => {
       >
         <div className="card-body">
           <fieldset className="fieldset">
+            <label className="label">Name</label>
+            <input
+              name="name"
+              type="text"
+              className="input"
+              placeholder="Name"
+            />
+
             <label className="label">Email</label>
             <input
               name="email"
