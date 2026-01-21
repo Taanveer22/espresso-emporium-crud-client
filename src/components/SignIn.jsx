@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+// Access the base URL from the .env file
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
@@ -19,7 +21,7 @@ const SignIn = () => {
         const lastSignInTime = result?.user?.metadata?.lastSignInTime;
         const signInInfo = { email, lastSignInTime };
 
-        fetch("http://localhost:5000/users", {
+        fetch(`${API_BASE_URL}/users`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

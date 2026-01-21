@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+// Access the base URL from the .env file
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const Users = () => {
   const loadedUsers = useLoaderData();
@@ -19,7 +21,7 @@ const Users = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // === DELETE FROM DATABASE ===
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`${API_BASE_URL}/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

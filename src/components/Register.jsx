@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+// Access the base URL from the .env file
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
@@ -22,7 +24,7 @@ const Register = () => {
 
         // send data to server and database
         const newUser = { name, email, creationTime };
-        fetch("http://localhost:5000/users", {
+        fetch(`${API_BASE_URL}/users`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

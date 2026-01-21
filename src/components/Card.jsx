@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+// Access the base URL from the .env file
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const Card = ({ item, allCoffees, setAllCoffees }) => {
   // console.log(item);
@@ -15,7 +17,7 @@ const Card = ({ item, allCoffees, setAllCoffees }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/coffees/${id}`, {
+        fetch(`${API_BASE_URL}/coffees/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

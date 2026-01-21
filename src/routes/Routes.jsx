@@ -7,6 +7,9 @@ import Register from "../components/Register";
 import Home from "../components/Home";
 import Users from "../components/Users";
 
+// Access the base URL from the .env file
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -15,7 +18,7 @@ const Routes = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/coffees"),
+        loader: () => fetch(`${API_BASE_URL}/coffees`),
       },
       {
         path: "/addCoffee",
@@ -24,8 +27,7 @@ const Routes = createBrowserRouter([
       {
         path: "/updateCoffee/:id",
         element: <UpdateCoffee></UpdateCoffee>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffees/${params.id}`),
+        loader: ({ params }) => fetch(`${API_BASE_URL}/coffees/${params.id}`),
       },
       {
         path: "/signin",
@@ -38,7 +40,7 @@ const Routes = createBrowserRouter([
       {
         path: "/users",
         element: <Users></Users>,
-        loader: () => fetch("http://localhost:5000/users"),
+        loader: () => fetch(`${API_BASE_URL}/users`),
       },
     ],
   },

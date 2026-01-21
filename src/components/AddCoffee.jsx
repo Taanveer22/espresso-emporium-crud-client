@@ -1,4 +1,7 @@
 import Swal from "sweetalert2";
+// Access the base URL from the .env file
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 const AddCoffee = () => {
   const handleAddCoffee = (e) => {
     e.preventDefault();
@@ -24,7 +27,7 @@ const AddCoffee = () => {
     // console.log(newCoffee);
 
     // send data to server
-    fetch("http://localhost:5000/coffees", {
+    fetch(`${API_BASE_URL}/coffees`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

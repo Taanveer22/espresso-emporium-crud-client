@@ -1,5 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+// Access the base URL from the .env file
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const UpdateCoffee = () => {
   const coffeeData = useLoaderData();
@@ -29,7 +31,7 @@ const UpdateCoffee = () => {
     // console.log(updatedCoffee);
 
     // send data to server
-    fetch(`http://localhost:5000/coffees/${coffeeData._id}`, {
+    fetch(`${API_BASE_URL}/${coffeeData._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
