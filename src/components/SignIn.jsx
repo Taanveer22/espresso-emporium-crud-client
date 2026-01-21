@@ -3,9 +3,9 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
+  
   const handleSignInForm = (e) => {
     e.preventDefault();
-
     const email = e.target.email.value;
     const password = e.target.password.value;
     // console.log(email, password);
@@ -13,6 +13,20 @@ const SignIn = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
+
+        //========= send last sign in time data to server
+        const lastSignInTime = result?.user?.metadata?.lastSignInTime;
+        const signInInfo = { email, lastSignInTime };
+
+        fetch("http://localhost:5000/users", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(signInInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
       })
       .then((error) => {
         console.log(error.message);
@@ -31,7 +45,10 @@ const SignIn = () => {
             </p>
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <form onSubmit={handleSignInForm} className="card-body bg-green-400">
+            <form
+              onSubmit={handleSignInForm}
+              className="card-body bg-green-400"
+            >
               <fieldset className="fieldset">
                 <label className="label">Email</label>
                 <input
