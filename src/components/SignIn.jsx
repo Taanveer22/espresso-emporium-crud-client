@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
-  
+
   const handleSignInForm = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -12,7 +13,7 @@ const SignIn = () => {
 
     signInUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
 
         //========= send last sign in time data to server
         const lastSignInTime = result?.user?.metadata?.lastSignInTime;
@@ -26,10 +27,15 @@ const SignIn = () => {
           body: JSON.stringify(signInInfo),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => {
+            // console.log(data);
+            if (data.modifiedCount > 0) {
+              toast.success("successfully send email to db");
+            }
+          });
       })
-      .then((error) => {
-        console.log(error.message);
+      .catch(() => {
+        toast.error("failed to send email to db");
       });
   };
   return (

@@ -17,7 +17,7 @@ const Register = () => {
     registerUser(email, password)
       .then((result) => {
         toast.success("registered user successfully");
-        console.log(result.user);
+        // console.log(result.user);
         const creationTime = result?.user?.metadata?.creationTime;
 
         // send data to server and database
@@ -31,15 +31,15 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.insertedId) {
               toast.success("user created in database");
             }
           });
       })
-      .catch((error) => {
+      .catch(() => {
         toast.error("failed to register");
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 

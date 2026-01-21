@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 const Card = ({ item, allCoffees, setAllCoffees }) => {
   // console.log(item);
   const handleDelete = (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
