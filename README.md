@@ -1,18 +1,26 @@
-# React + Vite
+# ☕ Espresso Emporium  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack MERN stack application for managing a premium coffee inventory. Users can perform complete CRUD operations—adding new coffee blends, updating details, viewing the collection, and deleting items—all through a responsive and modern interface.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [https://espresso-emporium-crud-faee7.web.app/](https://espresso-emporium-crud-faee7.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- **Full CRUD Operations**: Create, Read, Update, and Delete coffee entries seamlessly
+- **Dynamic Routing**: Smooth navigation between pages using React Router
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Real-time Feedback**: Toast notifications for user actions (add, update, delete)
+- **Modern UI**: Clean, intuitive interface with coffee-themed styling
+- **REST API**: Custom backend API built with Express.js
+- **Database Persistence**: MongoDB Atlas for reliable data storage
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 🛠️ Tech Stack
 
-Note: This will impact Vite dev & build performances.
+| Layer | Technologies |
+|-------|-------------|
+| **Frontend** | React.js, Tailwind CSS, React Router, React Hot Toast |
+| **Backend** | Node.js, Express.js, CORS |
+| **Database** | MongoDB, Mongoose ODM |
+| **Deployment** | Firebase (Frontend), Vercel/Render (Backend) |
+| **Version Control** | Git, GitHub |
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
